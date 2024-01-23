@@ -1,13 +1,16 @@
-import React from 'react'
-import { UserButton } from "@clerk/nextjs";
+import LeftSidebar from "@/components/shared/leftsidebar/LeftSidebar";
+import React from "react";
 
-const Home= () => {
+const Home = () => {
   return (
-    <div>
-    <UserButton afterSignOutUrl="/"/>
-    Home
+    <div className="flex justify-between">
+      <section>
+        <LeftSidebar />
+      </section>
+      <section>All questions</section>
+      <section>Top trending category</section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

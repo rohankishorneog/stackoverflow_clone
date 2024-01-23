@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "@/context/ThemeProvider";
 
 // adding the title and description for the website
 export const metadeta: Metadata = {
@@ -34,20 +35,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      // changing the appearance of the clerkprovider
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary-grdient",
-          formActionLink: "primary-text-gradient hover:text-primary-500",
-        },
-      }}
-    >
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ClerkProvider
+          // changing the appearance of the clerkprovider
+          appearance={{
+            elements: {
+              formButtonPrimary: "primary-grdient",
+              formActionLink: "primary-text-gradient hover:text-primary-500",
+            },
+          }}
+        >
+          <ThemeProvider>{children}</ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
